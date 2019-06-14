@@ -529,6 +529,10 @@ def SPR_register(request):
 # *************************
 # chess
 # *************************
+def results_out(request):
+    return render(request,'navprayas/results/results.html')
+
+
 
 
 
