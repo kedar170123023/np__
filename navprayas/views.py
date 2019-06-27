@@ -532,6 +532,8 @@ def SPR_register(request):
 def results_out(request):
     return render(request,'navprayas/results/results.html')
 
+def results_out_19(request):
+    return render(request,'navprayas/results/results_eventwise.html')
 
 
 
