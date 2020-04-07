@@ -227,6 +227,8 @@ class FHS (models.Model):
 
 
 class Document  (models.Model):
+    uploader    = models.ForeignKey(User,on_delete = models.SET_NULL, null = True)
+    title       = models.CharField(max_length = 40, blank = False, null = False)
     description = models.CharField(max_length=255, blank=True)
-    document = models.FileField(upload_to='media/navprayas/%Y/%m/%d/')
+    document    = models.FileField(upload_to='media/navprayas/%Y/%m/%d/')
     uploaded_at = models.DateTimeField(auto_now_add=True)

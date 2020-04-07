@@ -38,13 +38,19 @@ from .forms import DocumentForm
 def index(request):
     return render(request, 'main/index.html', {})
 
+@login_required
 def file_upload(request):
+    if(not request.user.is_superuser):
+        messages.warning(request, 'You are not allowed to upload videos')
+        return redirect('index')
+
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
-        print(form,'\n\n\n')
         if form.is_valid():
-            vid = form.cleaned_data['document']
-            form.save()
+            unsaved_form = form.save(commit = False)
+            unsaved_form.uploader = request.user
+            unsaved_form.save()           
+
             return redirect('index')
     else:
         form = DocumentForm()
