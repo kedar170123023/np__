@@ -3,7 +3,13 @@ from django.contrib.auth.models import User
 from django import forms
 from .models import *
 from django.utils.translation import gettext, gettext_lazy as _
+from .models import Document
 
+
+class DocumentForm(forms.ModelForm):
+    class Meta:
+        model = Document
+        fields = ('description', 'document', )
 
 # *************
 # User Signup Form
@@ -156,6 +162,17 @@ class MTSE_form(forms.ModelForm):
 class SPR_form(forms.ModelForm):
     class Meta:
         model = SPR
+        fields = (
+            'Full_name',
+            'category',
+            'contact',
+            'addess',
+         )
+
+# Career Counselling
+class cc_form(forms.ModelForm):
+    class Meta:
+        model = cc
         fields = (
             'Full_name',
             'category',

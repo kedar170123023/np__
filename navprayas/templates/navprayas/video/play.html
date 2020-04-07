@@ -1,0 +1,49 @@
+{% extends 'navprayas/base.html' %}
+{% block title%}
+    video player
+{% endblock %}
+
+{% block content%}
+<section class="section-gap achivement-area">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-5">
+                <div class="achivement-content">
+                   
+                    <video id = "vp" class="video-js vjs-big-play-centered "   data-setup='{}'>
+                        <source src="{{video_url}}" type="video/mp4">
+                    </video>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+{% endblock %}
+
+{% block player%}
+<script>
+   
+
+    var player = videojs("vp",{
+        
+    autoplay : false,
+    controls : true,
+    loop : false,
+    playbackRates : [0.5, 1, 1.5, 2], 
+    userActions : {
+        hotkeys : true
+    },
+    fluid : true,
+    
+    
+    
+    
+    
+});
+</script>
+{% endblock %}

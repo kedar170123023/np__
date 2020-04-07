@@ -15,7 +15,10 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>{% block title %}{% endblock %}</title>
+    <title>{% block title %}{% endblock %}</title>
+    {% block style %}
+    
+    {% endblock %}
 
 	<link href="https://fonts.googleapis.com/css?family=Poppins:100,300,500" rel="stylesheet">
 		<!--
@@ -29,6 +32,10 @@
 		<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
         <link rel="stylesheet" href="{% static 'css/main.css' %}">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <link href="https://vjs.zencdn.net/7.7.5/video-js.css" rel="stylesheet" />
+        <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
+        <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+
 	</head>
 	<body class="dup-body">
 		<div class="dup-body-wrap" style="background-color: white;">
@@ -48,17 +55,8 @@
                                     <a class="text-danger" style="padding:1mm;" href={% url 'login' %}>Login</a>
                                     <a class="text-danger" style="padding:1mm;" href={% url 'signup' %}>Signup</a>
                                 {% endif %}
-                                    
-                                        <button class="btn btn-danger dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Competitions
-                                        <span class="caret"></span></button>
-                                        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href={% url 'MTSE_register' %} style="padding-left:2mm;">MTSE</a></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href={% url 'PR_register' %} style="padding-left:2mm;">Puzzle Race</a></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href={% url 'FHS_register' %} style="padding-left:2mm;">Free Hand Sketching</a></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href={% url 'chess_register' %} style="padding-left:2mm;">Chess</a></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href={% url 'rangotsav_register' %} style="padding-left:2mm;">Rangotsav</a></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href={% url 'SPR_register' %} style="padding-left:2mm;">Poem & story writing</a></li>
-                                        </ul>
+                                <a class="btn btn-danger" href={% url 'cc_register' %} type="button">Career Counselling<span class="caret"></span></a>
+                                        
                             </div>
                             <div class="main-menubar d-flex align-items-center">
                                 <nav class="hide">
@@ -155,8 +153,16 @@
 		<script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
 		<script src="{% static 'js/owl.carousel.min.js' %}"></script>
 		<script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
-		<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
-        <script src="{% static 'js/main.js' %}"></script>
+        <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+        <script src="https://vjs.zencdn.net/7.7.5/video.js"></script>
         <script src="https://awesome-table.com/AwesomeTableInclude.js"></script>
+        <script src="{% static 'js/main.js' %}"></script>
+
+        {% block player%}
+
+
+        {% endblock %}
+
+        
 	</body>
 </html>
