@@ -3,8 +3,8 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import login as auth_login   #as it clashes with other login term
-
-
+from django.template import RequestContext
+from django.shortcuts import get_object_or_404 
 from .forms import * #all the components from .form
 import json
 from django.views.decorators.csrf import csrf_exempt
@@ -32,11 +32,25 @@ PR_FEE      = '40'
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 
-from .models import Document
+from .models import *
 from .forms import DocumentForm
 # Create your views here.
 def index(request):
-    return render(request, 'main/index.html', {})
+    return render(request, 'main/index.html', { })
+
+def videos_list(request):
+    videos = Document.objects.all()
+    context = []
+    for video in videos:
+        context.append(('/play/' + str(video.id),
+                        video.title,
+                        video.uploader,
+                        video.uploaded_at,
+        ))
+    print(context)
+
+
+    return render(request, 'navprayas/video/videos.html', {'videos' : context})
 
 @login_required
 def file_upload(request):
@@ -59,10 +73,13 @@ def file_upload(request):
         'form': form
     })
 
-def play(request):
-    video = Document.objects.all()[0].document.url
-    # print(video)
-    return render(request, 'navprayas/video/play.html', {'video_url' : video})
+def play(request,video_id):
+    try: 
+        video = get_object_or_404(Document,pk=video_id)
+    except : 
+        return redirect('videos_list')
+
+    return render(request, 'navprayas/video/play.html', {'video' : video})
 
 # Create your views here.
 def index(request):

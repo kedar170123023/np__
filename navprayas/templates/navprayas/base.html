@@ -16,9 +16,18 @@
 	<meta charset="UTF-8">
 	<!-- Site Title -->
     <title>{% block title %}{% endblock %}</title>
-    {% block style %}
     
-    {% endblock %}
+ 
+
+ 
+    
+    <style>
+
+        {% block style %}
+        
+        {% endblock %}
+
+    </style>
 
 	<link href="https://fonts.googleapis.com/css?family=Poppins:100,300,500" rel="stylesheet">
 		<!--
@@ -56,7 +65,13 @@
                                     <a class="text-danger" style="padding:1mm;" href={% url 'signup' %}>Signup</a>
                                 {% endif %}
                                 <a class="btn btn-danger" href={% url 'cc_register' %} type="button">Career Counselling<span class="caret"></span></a>
-                                        
+                                {% if user.is_superuser %}
+                                <br>
+                                <br>
+                                <a class="btn btn-danger" href={% url 'upload' %} type="button">Upload<span class="caret"></span></a>
+                                {%endif%}
+                                <a class="btn btn-danger" href={% url 'videos_list' %} type="button">Videos<span class="caret"></span></a>
+                                      
                             </div>
                             <div class="main-menubar d-flex align-items-center">
                                 <nav class="hide">
@@ -143,8 +158,11 @@
 			</footer>
             
         {% endblock %}
-
+        
       <!-- Endblock for Footer Area -->
+
+      {% block upper_script%}
+      {% endblock %}
 		
         </div>
 		<script src="{% static 'js/vendor/jquery-2.2.4.min.js' %}"></script>

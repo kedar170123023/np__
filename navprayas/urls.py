@@ -10,8 +10,9 @@ urlpatterns = [
     # urls for home_links
     # *****************************
 
+    path('videos_list/', views.videos_list, name='videos_list'),
     path('upload/', views.file_upload, name='upload'),
-    path('play/', views.play, name='play'),
+    path('play/<int:video_id>/', views.play, name='play'),
     path('index/', views.index, name='index'),
     path('results/', views.results_out, name='results'),
     path('results19/', views.results_out_19, name='results_19'),

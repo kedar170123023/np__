@@ -1,9 +1,15 @@
 {% extends 'navprayas/base.html' %}
+{% load crispy_forms_tags %}
 {% block title%}
     video player
 {% endblock %}
 
+
+
 {% block content%}
+<br>
+<br>
+<br>
 <section class="section-gap achivement-area">
     <div class="container">
         <div class="row align-items-center">
@@ -12,8 +18,8 @@
                    
                     <form method="post" enctype="multipart/form-data">
                         {% csrf_token %}
-                        <br> <b>Select video </b> : 
-                        {{ form.as_p }}
+                        <br>
+                        {{ form | crispy }}
                         <button type="submit">Upload</button>
                       </form>
 

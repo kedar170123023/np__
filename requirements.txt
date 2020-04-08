@@ -12,3 +12,4 @@ crypto
 oauth2client==4.1
 google-api-python-client==1.7
 pycryptodome==3.8
+django-imagekit==4.0.2

@@ -4,17 +4,26 @@
 {% endblock %}
 
 {% block content%}
+<br><br><br>
+<br><br><br>
 <section class="section-gap achivement-area">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-lg-5">
+            <div class="col-lg-12">
                 <div class="achivement-content">
+                    <div class="col-lg-7">
+
+                        <video id = "vp" class="video-js vjs-big-play-centered "   data-setup='{}'>
+                            <source src="{{video.document.url}}" type="video/mp4">
+                        </video>
+                        <h3>
+                          <b>{{video.title}}</b>
+                        </h3>  
+                    </div>
                    
-                    <video id = "vp" class="video-js vjs-big-play-centered "   data-setup='{}'>
-                        <source src="{{video_url}}" type="video/mp4">
-                    </video>
 
                 </div>
+
             </div>
 
         </div>
